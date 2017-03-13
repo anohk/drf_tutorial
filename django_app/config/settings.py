@@ -59,7 +59,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'snippets',
-
 ]
 
 MIDDLEWARE = [
