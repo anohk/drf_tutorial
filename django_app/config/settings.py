@@ -45,6 +45,17 @@ SECRET_KEY = config['django']['secret_key']
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_xml.parsers.JSONParser',
+        'rest_framework_xml.parsers.XMLParser',
+    ),
+    'DEFAULT_RENDER_CLASSES': (
+        'rest_framework_xml.renders.JSONRenderer',
+        'rest_framework_xml.renders.XMLRenderer',
+    ),
+}
+
 # Application definition
 
 INSTALLED_APPS = [
