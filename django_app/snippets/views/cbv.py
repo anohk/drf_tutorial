@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import generics, permissions
+from rest_framework import mixins
 
 from snippets.models import Snippet
 from snippets.permissions import IsOwnerOrReadOnly
@@ -57,6 +58,9 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 #
 #     def put(self, request, *args, **kwargs):
 #         return self.update(request, *args, **kwargs)
+#
+#     def patch(self, request, *args, **kwargs):
+#         return self.partial_update(request, *args, **kwargs)
 #
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
