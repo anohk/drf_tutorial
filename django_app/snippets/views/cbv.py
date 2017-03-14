@@ -61,6 +61,8 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
 
+# ----------------------------------------------------------------
+
 # class SnippetList(APIView):
 #     def get(self, request, format=None):
 #         snippets = Snippet.objects.all()
@@ -73,8 +75,8 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 #             serializer.save()
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
+#
+#
 # class SnippetDetail(APIView):
 #     def get_object(self, pk):
 #         try:
@@ -87,62 +89,30 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 #         serializer = SnippetSerializer(snippet)
 #         return Response(serializer.data)
 #
+#     # def put(self, request, pk, format=None):
+#     #     snippet = self.get_object(pk)
+#     #     serializer = SnippetSerializer(snippet, data=request.data)
+#     #     if serializer.is_valid():
+#     #         serializer.save()
+#     #         return Response(serializer.data)
+#     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#
+#     def delete(self, requets, pk, format=None):
+#         snippet = self.get_object(pk)
+#         snippet.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+#
+#     def update(self, request, pk, format=None, partial=False):
+#         snippet = self.get_object(pk)
+#         serializer = SnippetSerializer(snippet, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#
 #     def put(self, request, pk, format=None):
-#         snippet = self.get_object(pk)
-#         serializer = SnippetSerializer(snippet, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#         return self.update(request, pk, format, partial=False)
 #
-#     def delet(self, requets, pk, format=None):
-#         snippet = self.get_object(pk)
-#         snippet.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
+#     def patch(self, request, pk, format=None):
+#         return self.update(request, pk, format, partial=True)
 
-
-
-
-#
-# @api_view(['GET', 'POST'])
-# def snippet_list(request, format=None):
-#     """
-#     코드조각을 모두 보여주거나 새 코드 조각을 만든다
-#     """
-#     if request.method == 'GET':
-#         snippets = Snippet.objects.all()
-#         serializer = SnippetSerializer(snippets, many=True)
-#         return Response(serializer.data)
-#
-#     elif request.method == 'POST':
-#         serializer = SnippetSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#
-#
-# @api_view(['GET', 'PUT', 'DELETE'])
-# def snippet_detail(request, pk, format=None):
-#     """
-#     코드조각 조회/업데이트/삭제
-#     """
-#     try:
-#         snippet = Snippet.objects.get(pk=pk)
-#     except Snippet.DoesNotExist:
-#         return Response(status=status.HTTP_404_NOT_FOUND)
-#
-#     if request.method == 'GET':
-#         serializer = SnippetSerializer(snippet)
-#         return Response(serializer.data)
-#
-#     elif request.method == 'PUT':
-#         serializer = SnippetSerializer(snippet, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#
-#     elif request.method == 'DELETE':
-#         snippet.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
